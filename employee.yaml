@@ -1,0 +1,109 @@
+apiVersion: digital-employee/v1
+kind: DigitalEmployee
+metadata:
+  id: de_ecommerce_repurchase_operator
+  name: 私域复购运营
+  alias: 私域运营专员·小复
+  repo: de-ecommerce-repurchase-operator
+  card_no: 6.4-⑧
+  group: ecommerce
+  group_label: 电商商家
+  phase: P2 后期（首发组合跑通后的第二增长曲线）
+  complexity: S-M
+  score: 高频3｜痛点3｜客单价4｜广度3｜价值5 ＝ **18/25**
+  price: 50-150 元/月（SCRM 市场已验证付费意愿，据R3调研）
+  channels:
+  - GitHub
+  - 小红书（私域话题流量池）
+  - 千问办公（办公场景触达小微经营者）
+  license: Proprietary
+  version: 1.0.0
+spec:
+  positioning: 私域运营专员·小复 ｜ 一人店用得起的私域，不碰有赞/微盟的重资产玩法
+  users: 有老客盘（累计订单 1000+）的腰部卖家
+  boundary: 做：老客分层、复购预测、活动文案、报表；不做：自动加微（封号风险）、代发短信群发
+  kpi: 复购率环比提升；老客触达打开率 ≥20%；月报按时交付
+  roi_summary: 对标有赞/微盟数千到数万报价（据R3调研）；月省 10h≈¥300
+  demand_refs:
+  - D21
+  - D07
+  demand_support: 充分
+  demand_evidence: 中
+runtime:
+  system_prompt: persona/system-prompt.md
+  boundary: persona/boundary.md
+  kpi: persona/kpi.md
+deliverables:
+  skills:
+  - slug: campaign-plan-generator
+    name: 活动方案生成
+    kind: private
+    path: skills/campaign-plan-generator
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: marketing-copy
+    name: 营销文案
+    kind: private
+    path: skills/marketing-copy
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: repurchase-cycle-calc
+    name: 复购周期计算
+    kind: private
+    path: skills/repurchase-cycle-calc
+    version: 1.0.0
+    maturity: contract-complete
+  - slug: repurchase-report
+    name: 复购报表
+    kind: private
+    path: skills/repurchase-report
+    version: 1.0.0
+    maturity: contract-complete
+  workflows:
+  - slug: wf-ecom-repurchase-package-card
+    name: 包裹卡/售后卡文案
+    path: workflows/wf-ecom-repurchase-package-card
+    version: 1.0.0
+    phase: P1
+    calls:
+    - marketing-copy
+    - compliance-word-scan
+  - slug: wf-ecom-repurchase-segment
+    name: 订单老客分层（RFM）
+    path: workflows/wf-ecom-repurchase-segment
+    version: 1.0.0
+    phase: P2
+    calls:
+    - rfm-segmentation
+  - slug: wf-ecom-repurchase-remind
+    name: 复购周期预测与触达文案
+    path: workflows/wf-ecom-repurchase-remind
+    version: 1.0.0
+    phase: P2
+    calls:
+    - repurchase-cycle-calc
+    - marketing-copy
+  - slug: wf-ecom-repurchase-member-day
+    name: 会员日活动方案
+    path: workflows/wf-ecom-repurchase-member-day
+    version: 1.0.0
+    phase: P2
+    calls:
+    - campaign-plan-generator
+  - slug: wf-ecom-repurchase-monthly-report
+    name: 复购率月报
+    path: workflows/wf-ecom-repurchase-monthly-report
+    version: 1.0.0
+    phase: P2
+    calls:
+    - repurchase-report
+  knowledge_base: kb/
+  connectors: connectors/bindings.yaml
+external_dependencies:
+- repo: agent-skills-core
+  version: 1.0.0
+  skills:
+  - compliance-word-scan
+  - rfm-segmentation
+  resolution: external
+spec_only_dependencies: []
