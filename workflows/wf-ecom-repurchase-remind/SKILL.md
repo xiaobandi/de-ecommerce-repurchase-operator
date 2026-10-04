@@ -1,59 +1,67 @@
 ---
-name: wf-ecom-repurchase-member-day
+name: wf-ecom-repurchase-remind
 description: >-
-  私域复购运营 的「会员日活动方案」工作流：分层→活动机制→全流程文案。触发方式：人工（每月）。
-  当用户要完成「会员日活动方案」这件事、或触发了上述条件时使用。
+  私域复购运营 的「复购周期预测与触达文案」工作流：消耗周期→到期名单→触达文案。触发方式：定时（每周）。
+  当用户要完成「复购周期预测与触达文案」这件事、或触发了上述条件时使用。
 license: Proprietary
+compatibility: >-
+  需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
+  跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。
 metadata:
   author: PLATFORM
   version: "1.0.0"
   standard: agent-skills/v1
+  library: agent-skills-library
   layer: L2-workflow
   owner: de_ecommerce_repurchase_operator
+  repo: de-ecommerce-repurchase-operator
+  visibility: private_to_employee
+  delivery: employee
   complexity: S
   phase: P2
-  source: new
+  source: library
 ---
 
-# 会员日活动方案
+# 复购周期预测与触达文案
 
-> 归属：**私域复购运营**（`de-ecommerce-repurchase-operator`）　触发：人工（每月）　
+> 归属：**私域复购运营**（`de-ecommerce-repurchase-operator`）　触发：定时（每周）　
 > 复杂度 S　阶段 P2
 
 ## 一、这条工作流解决什么
 
-分层→活动机制→全流程文案
+消耗周期→到期名单→触达文案
 
-**业务收益**：替代代运营单次策划 ¥500+
+**业务收益**：耗材类复购提醒直接出单
 
 ## 二、调用的 SKILL（必填列，逐条锁定版本）
 
 | 技能名 | slug | 来源仓 | 版本 |
 |---|---|---|---|
-| `活动方案生成` | `campaign-plan-generator` | 本仓 | v1.0.0 |
+| `复购周期计算` | `repurchase-cycle-calc` | 本仓 | v1.0.0 |
+| `营销文案` | `marketing-copy` | 本仓 | v1.0.0 |
 
 > 公共技能来自 `agent-skills-core@1.0.0`，本仓库只做外部依赖引用，
 > **不内联复制**其正文——这是三层仓库体系的硬规则，避免同一能力多份副本各自漂移。
 
 ## 三、执行步骤（每步四要素齐备）
 
-### 步骤 1：分层
+### 步骤 1：消耗周期
 
-- **做**：分层
+- **做**：消耗周期
 - **输入来源**：用户提供的原始材料（工作流第 1 步没有「上一步」）/ 本员工知识库 `kb/` / 连接器只读数据；三者皆空时必须停在 G1 闸门
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
 
-### 步骤 2：活动机制
+### 步骤 2：到期名单
 
-- **做**：活动机制
+- **做**：到期名单
 - **输入来源**：步骤 1 的产出 / 本员工知识库 `kb/` / 连接器只读数据
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
 
-### 步骤 3：全流程文案
+### 步骤 3：触达文案
 
-- **做**：全流程文案
+- **做**：触达文案
 - **输入来源**：步骤 2 的产出 / 本员工知识库 `kb/` / 连接器只读数据
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式

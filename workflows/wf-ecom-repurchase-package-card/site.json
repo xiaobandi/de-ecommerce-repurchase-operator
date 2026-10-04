@@ -1,0 +1,15 @@
+{
+  "name": "wf-ecom-repurchase-package-card",
+  "title": "包裹卡/售后卡文案",
+  "kind": "workflow",
+  "owner": "de-ecommerce-repurchase-operator",
+  "complexity": "S",
+  "phase": "P1",
+  "one_liner": "商品/人群→卡片文案→合规检查",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

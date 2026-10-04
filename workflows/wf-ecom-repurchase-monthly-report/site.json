@@ -1,0 +1,15 @@
+{
+  "name": "wf-ecom-repurchase-monthly-report",
+  "title": "复购率月报",
+  "kind": "workflow",
+  "owner": "de-ecommerce-repurchase-operator",
+  "complexity": "S",
+  "phase": "P2",
+  "one_liner": "数据→复购指标→改进建议",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

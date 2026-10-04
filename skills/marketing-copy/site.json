@@ -1,0 +1,15 @@
+{
+  "name": "marketing-copy",
+  "title": "营销文案",
+  "kind": "skill",
+  "owner": "de-ecommerce-repurchase-operator",
+  "complexity": "S",
+  "phase": "P1",
+  "one_liner": "分层人群→个性化触达文案（人群+活动→文案）",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

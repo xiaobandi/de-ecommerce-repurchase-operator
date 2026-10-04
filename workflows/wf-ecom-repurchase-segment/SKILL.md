@@ -1,60 +1,66 @@
 ---
-name: wf-ecom-repurchase-remind
+name: wf-ecom-repurchase-segment
 description: >-
-  私域复购运营 的「复购周期预测与触达文案」工作流：消耗周期→到期名单→触达文案。触发方式：定时（每周）。
-  当用户要完成「复购周期预测与触达文案」这件事、或触发了上述条件时使用。
+  私域复购运营 的「订单老客分层（RFM）」工作流：订单导出→RFM 计算→分层名单。触发方式：定时（每周）。
+  当用户要完成「订单老客分层（RFM）」这件事、或触发了上述条件时使用。
 license: Proprietary
+compatibility: >-
+  需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
+  跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。
 metadata:
   author: PLATFORM
   version: "1.0.0"
   standard: agent-skills/v1
+  library: agent-skills-library
   layer: L2-workflow
   owner: de_ecommerce_repurchase_operator
+  repo: de-ecommerce-repurchase-operator
+  visibility: private_to_employee
+  delivery: employee
   complexity: S
   phase: P2
   source: library
 ---
 
-# 复购周期预测与触达文案
+# 订单老客分层（RFM）
 
 > 归属：**私域复购运营**（`de-ecommerce-repurchase-operator`）　触发：定时（每周）　
 > 复杂度 S　阶段 P2
 
 ## 一、这条工作流解决什么
 
-消耗周期→到期名单→触达文案
+订单导出→RFM 计算→分层名单
 
-**业务收益**：耗材类复购提醒直接出单
+**业务收益**：月省数据分析 8h≈¥240
 
 ## 二、调用的 SKILL（必填列，逐条锁定版本）
 
 | 技能名 | slug | 来源仓 | 版本 |
 |---|---|---|---|
-| `复购周期计算` | `repurchase-cycle-calc` | 本仓 | v1.0.0 |
-| `营销文案` | `marketing-copy` | 本仓 | v1.0.0 |
+| `RFM 分层` | `rfm-segmentation` | core | v1.0.0 |
 
 > 公共技能来自 `agent-skills-core@1.0.0`，本仓库只做外部依赖引用，
 > **不内联复制**其正文——这是三层仓库体系的硬规则，避免同一能力多份副本各自漂移。
 
 ## 三、执行步骤（每步四要素齐备）
 
-### 步骤 1：消耗周期
+### 步骤 1：订单导出
 
-- **做**：消耗周期
+- **做**：订单导出
 - **输入来源**：用户提供的原始材料（工作流第 1 步没有「上一步」）/ 本员工知识库 `kb/` / 连接器只读数据；三者皆空时必须停在 G1 闸门
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
 
-### 步骤 2：到期名单
+### 步骤 2：RFM 计算
 
-- **做**：到期名单
+- **做**：RFM 计算
 - **输入来源**：步骤 1 的产出 / 本员工知识库 `kb/` / 连接器只读数据
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式
 
-### 步骤 3：触达文案
+### 步骤 3：分层名单
 
-- **做**：触达文案
+- **做**：分层名单
 - **输入来源**：步骤 2 的产出 / 本员工知识库 `kb/` / 连接器只读数据
 - **依据与结论**：把本步结论对应到具体输入项
 - **未决 · 待填**：缺数据处写 `<待填>` 并给出获取方式

@@ -1,0 +1,15 @@
+{
+  "name": "campaign-plan-generator",
+  "title": "活动方案生成",
+  "kind": "skill",
+  "owner": "de-ecommerce-repurchase-operator",
+  "complexity": "S",
+  "phase": "P2",
+  "one_liner": "目标+预算→活动机制流程（目标→方案）",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}

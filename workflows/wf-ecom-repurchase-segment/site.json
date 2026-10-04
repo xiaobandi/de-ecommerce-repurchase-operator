@@ -1,0 +1,15 @@
+{
+  "name": "wf-ecom-repurchase-segment",
+  "title": "订单老客分层（RFM）",
+  "kind": "workflow",
+  "owner": "de-ecommerce-repurchase-operator",
+  "complexity": "S",
+  "phase": "P2",
+  "one_liner": "订单导出→RFM 计算→分层名单",
+  "pages": [
+    "docs/使用手册.html",
+    "docs/使用示例.html",
+    "docs/用户场景.html",
+    "docs/架构与流程图.html"
+  ]
+}
