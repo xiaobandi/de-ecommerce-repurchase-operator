@@ -3,7 +3,7 @@ name: wf-ecom-repurchase-member-day
 description: >-
   私域复购运营 的「会员日活动方案」工作流：分层→活动机制→全流程文案。触发方式：人工（每月）。
   当用户要完成「会员日活动方案」这件事、或触发了上述条件时使用。
-license: Proprietary
+license: Apache-2.0
 compatibility: >-
   需要能读取工作区文件；若环境支持执行代码，将额外启用 scripts/ 下的确定性脚本路径。
   跨 WorkBuddy / ChatGPT / DeepSeek Harness / Kimi Work / 豆包工作。

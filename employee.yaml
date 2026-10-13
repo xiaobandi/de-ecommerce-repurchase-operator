@@ -16,7 +16,7 @@ metadata:
   - GitHub
   - 小红书（私域话题流量池）
   - 千问办公（办公场景触达小微经营者）
-  license: Proprietary
+  license: Apache-2.0
   version: 1.0.0
 spec:
   positioning: 私域运营专员·小复 ｜ 一人店用得起的私域，不碰有赞/微盟的重资产玩法
